@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados de Formulário</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+
+    body { font: 12pt Arial; }
+    h1, h2, h3 { font-family: 'Pacifico', cursive; font-weight: normal;}
+    input[type=number] { font-size: 12pt; }
+    input[type=submit] { 
+        background-color: green; 
+    color: white; 
+    font-size: 12pt; 
+    padding: 5px; 
+}
+    </style>
+
+</head>
+<body>
+
+      <h1>Contando de 0 até um número positivo qualquer</h1>
+    <p>Escolha o limite final para a contagem a partir do 0 (digite apenas números postivos)</p>
+    <section id="entrada">
+        <!-- Se quiser maiores informações sobre uso de formulários, consulte nosso repositório das aulas de HTML5 e CSS3 -->
+        <form action="#" method="get">
+            <!-- O método GET envia os dados pela própria URL, durante a chamada -->
+            <label for="fnum">Valor final: </label>
+            <input type="number" name="num" id="fnum" placeholder="Apenas positivos">
+            <!-- O name de um objeto é mais usado por outras linguagens (como PHP), já o ID será mais usado por nós em JavaScript -->
+            <input type="submit" value="Contar" formaction="javascript:contagem()">
+            <!-- Ao usar o FORMACTION, é preciso colocar javascript: antes do nome da função -->
+        </form>
+    </section>
+    <section id="saida">
+        <p>Preencha os dados acima e aperte o botão.</p>
+    </section>
+
+    <script src="script.js"></script>
+
+    <script>
+        function contagem() {
+    let saida = document.getElementById('saida')
+    let num = Number(document.getElementById('fnum').value)
+    saida.innerHTML += `<h2>Contando de 0 até ${num}</h2>`
+    let cont = 0
+    while (cont <= num) {
+        saida.innerHTML += ` ${cont} &#x1F449;`
+        cont ++
+    }
+    saida.innerHTML += ` &#x1F3C1;`
+}
+    </script>
+    
+</body>
+</html>

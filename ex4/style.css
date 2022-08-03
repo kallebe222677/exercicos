@@ -1,0 +1,10 @@
+.desenho td img {
+  height: 96px;
+  width: 96px;
+  border:2px solid rgb(251, 0, 0);
+}
+.borda {
+  background-color: rgb(233, 233, 233);
+  border:14px solid rgb(165, 5, 13);
+}
+
