@@ -1,0 +1,709 @@
+<head>
+<title>GIRA</title>
+<meta charset="utf-8">
+<meta name="description" content="Gira - Gestão Integrada de Recebíveis do Agronegócio">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width">
+<link rel="icon" href="statics/ico_verde.png" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="32x32" href="statics/icons/ico_verde.png">
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900|Rubik:300,400,500,700,900&amp;display=swap" rel="stylesheet"><link href="css/035ccef0.09b93894.css" rel="prefetch"><link href="css/0441ada2.5aac38ee.css" rel="prefetch"><link href="css/1de1601c.717cc5a1.css" rel="prefetch"><link href="css/2fe913c6.8c1b690b.css" rel="prefetch"><link href="css/30fe3f8e.2bdb225b.css" rel="prefetch"><link href="css/31e08a3a.065f5c3f.css" rel="prefetch"><link href="css/340899a2.feef37c5.css" rel="prefetch"><link href="css/50fafe4c.2bdb225b.css" rel="prefetch"><link href="css/5ea43ae4.2bdb225b.css" rel="prefetch"><link href="css/b4b3c4a8.7f55270f.css" rel="prefetch"><link href="css/b5db1d1a.2bdb225b.css" rel="prefetch"><link href="css/d0a414c6.baea5536.css" rel="prefetch"><link href="css/edbfeac8.68e92e2d.css" rel="prefetch"><link href="js/035ccef0.1683c83c.js" rel="prefetch"><link href="js/0441ada2.a5e3b529.js" rel="prefetch"><link href="js/1de1601c.78219ab7.js" rel="prefetch"><link href="js/2fe913c6.1cf611ac.js" rel="prefetch"><link href="js/30fe3f8e.61596256.js" rel="prefetch"><link href="js/31e08a3a.33129cb8.js" rel="prefetch"><link href="js/340899a2.fec00f0a.js" rel="prefetch"><link href="js/4b47640d.8331b9f9.js" rel="prefetch"><link href="js/50fafe4c.fcb82ead.js" rel="prefetch"><link href="js/5ea43ae4.3c3c84d3.js" rel="prefetch"><link href="js/b4b3c4a8.9b38c483.js" rel="prefetch"><link href="js/b5db1d1a.c5190809.js" rel="prefetch"><link href="js/d0a414c6.73b31eb9.js" rel="prefetch"><link href="js/edbfeac8.1d81d5ac.js" rel="prefetch"><link href="css/app.5804aab1.css" rel="preload" as="style"><link href="js/app.177b8278.js" rel="preload" as="script"><link href="js/runtime.84ef7671.js" rel="preload" as="script"><link href="js/vendor.3c7a359d.js" rel="preload" as="script"><link href="css/app.5804aab1.css" rel="stylesheet"><style type="text/css">.apexcharts-canvas {
+  position: relative;
+  user-select: none;
+  /* cannot give overflow: hidden as it will crop tooltips which overflow outside chart area */
+}
+
+
+/* scrollbar is not visible by default for legend, hence forcing the visibility */
+.apexcharts-canvas ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 6px;
+}
+
+.apexcharts-canvas ::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+
+.apexcharts-inner {
+  position: relative;
+}
+
+.apexcharts-text tspan {
+  font-family: inherit;
+}
+
+.legend-mouseover-inactive {
+  transition: 0.15s ease all;
+  opacity: 0.20;
+}
+
+.apexcharts-series-collapsed {
+  opacity: 0;
+}
+
+.apexcharts-tooltip {
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px -4px #999;
+  cursor: default;
+  font-size: 14px;
+  left: 62px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 12;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-tooltip.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light {
+  border: 1px solid #e3e3e3;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark {
+  color: #fff;
+  background: rgba(30, 30, 30, 0.8);
+}
+
+.apexcharts-tooltip * {
+  font-family: inherit;
+}
+
+
+.apexcharts-tooltip-title {
+  padding: 6px;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+  background: #ECEFF1;
+  border-bottom: 1px solid #ddd;
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
+  background: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid #333;
+}
+
+.apexcharts-tooltip-text-y-value,
+.apexcharts-tooltip-text-goals-value,
+.apexcharts-tooltip-text-z-value {
+  display: inline-block;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.apexcharts-tooltip-text-y-label:empty,
+.apexcharts-tooltip-text-y-value:empty,
+.apexcharts-tooltip-text-goals-label:empty,
+.apexcharts-tooltip-text-goals-value:empty,
+.apexcharts-tooltip-text-z-value:empty {
+  display: none;
+}
+
+.apexcharts-tooltip-text-y-value,
+.apexcharts-tooltip-text-goals-value,
+.apexcharts-tooltip-text-z-value {
+  font-weight: 600;
+}
+
+.apexcharts-tooltip-text-goals-label, 
+.apexcharts-tooltip-text-goals-value {
+  padding: 6px 0 5px;
+}
+
+.apexcharts-tooltip-goals-group, 
+.apexcharts-tooltip-text-goals-label, 
+.apexcharts-tooltip-text-goals-value {
+  display: flex;
+}
+.apexcharts-tooltip-text-goals-label:not(:empty),
+.apexcharts-tooltip-text-goals-value:not(:empty) {
+  margin-top: -6px;
+}
+
+.apexcharts-tooltip-marker {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  top: 0px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.apexcharts-tooltip-series-group {
+  padding: 0 10px;
+  display: none;
+  text-align: left;
+  justify-content: left;
+  align-items: center;
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-marker {
+  opacity: 1;
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active,
+.apexcharts-tooltip-series-group:last-child {
+  padding-bottom: 4px;
+}
+
+.apexcharts-tooltip-series-group-hidden {
+  opacity: 0;
+  height: 0;
+  line-height: 0;
+  padding: 0 !important;
+}
+
+.apexcharts-tooltip-y-group {
+  padding: 6px 0 5px;
+}
+
+.apexcharts-tooltip-box, .apexcharts-custom-tooltip {
+  padding: 4px 8px;
+}
+
+.apexcharts-tooltip-boxPlot {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.apexcharts-tooltip-box>div {
+  margin: 4px 0;
+}
+
+.apexcharts-tooltip-box span.value {
+  font-weight: bold;
+}
+
+.apexcharts-tooltip-rangebar {
+  padding: 5px 8px;
+}
+
+.apexcharts-tooltip-rangebar .category {
+  font-weight: 600;
+  color: #777;
+}
+
+.apexcharts-tooltip-rangebar .series-name {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.apexcharts-xaxistooltip {
+  opacity: 0;
+  padding: 9px 10px;
+  pointer-events: none;
+  color: #373d3f;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+  background: #ECEFF1;
+  border: 1px solid #90A4AE;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-xaxistooltip.apexcharts-theme-dark {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.apexcharts-xaxistooltip:after,
+.apexcharts-xaxistooltip:before {
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.apexcharts-xaxistooltip:after {
+  border-color: rgba(236, 239, 241, 0);
+  border-width: 6px;
+  margin-left: -6px;
+}
+
+.apexcharts-xaxistooltip:before {
+  border-color: rgba(144, 164, 174, 0);
+  border-width: 7px;
+  margin-left: -7px;
+}
+
+.apexcharts-xaxistooltip-bottom:after,
+.apexcharts-xaxistooltip-bottom:before {
+  bottom: 100%;
+}
+
+.apexcharts-xaxistooltip-top:after,
+.apexcharts-xaxistooltip-top:before {
+  top: 100%;
+}
+
+.apexcharts-xaxistooltip-bottom:after {
+  border-bottom-color: #ECEFF1;
+}
+
+.apexcharts-xaxistooltip-bottom:before {
+  border-bottom-color: #90A4AE;
+}
+
+.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:after {
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:before {
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-top:after {
+  border-top-color: #ECEFF1
+}
+
+.apexcharts-xaxistooltip-top:before {
+  border-top-color: #90A4AE;
+}
+
+.apexcharts-xaxistooltip-top.apexcharts-theme-dark:after {
+  border-top-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-top.apexcharts-theme-dark:before {
+  border-top-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-yaxistooltip {
+  opacity: 0;
+  padding: 4px 10px;
+  pointer-events: none;
+  color: #373d3f;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+  background: #ECEFF1;
+  border: 1px solid #90A4AE;
+}
+
+.apexcharts-yaxistooltip.apexcharts-theme-dark {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.apexcharts-yaxistooltip:after,
+.apexcharts-yaxistooltip:before {
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.apexcharts-yaxistooltip:after {
+  border-color: rgba(236, 239, 241, 0);
+  border-width: 6px;
+  margin-top: -6px;
+}
+
+.apexcharts-yaxistooltip:before {
+  border-color: rgba(144, 164, 174, 0);
+  border-width: 7px;
+  margin-top: -7px;
+}
+
+.apexcharts-yaxistooltip-left:after,
+.apexcharts-yaxistooltip-left:before {
+  left: 100%;
+}
+
+.apexcharts-yaxistooltip-right:after,
+.apexcharts-yaxistooltip-right:before {
+  right: 100%;
+}
+
+.apexcharts-yaxistooltip-left:after {
+  border-left-color: #ECEFF1;
+}
+
+.apexcharts-yaxistooltip-left:before {
+  border-left-color: #90A4AE;
+}
+
+.apexcharts-yaxistooltip-left.apexcharts-theme-dark:after {
+  border-left-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-left.apexcharts-theme-dark:before {
+  border-left-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-right:after {
+  border-right-color: #ECEFF1;
+}
+
+.apexcharts-yaxistooltip-right:before {
+  border-right-color: #90A4AE;
+}
+
+.apexcharts-yaxistooltip-right.apexcharts-theme-dark:after {
+  border-right-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-right.apexcharts-theme-dark:before {
+  border-right-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip.apexcharts-active {
+  opacity: 1;
+}
+
+.apexcharts-yaxistooltip-hidden {
+  display: none;
+}
+
+.apexcharts-xcrosshairs,
+.apexcharts-ycrosshairs {
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-xcrosshairs.apexcharts-active,
+.apexcharts-ycrosshairs.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-ycrosshairs-hidden {
+  opacity: 0;
+}
+
+.apexcharts-selection-rect {
+  cursor: move;
+}
+
+.svg_select_boundingRect, .svg_select_points_rot {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.apexcharts-selection-rect + g .svg_select_boundingRect,
+.apexcharts-selection-rect + g .svg_select_points_rot {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.apexcharts-selection-rect + g .svg_select_points_l,
+.apexcharts-selection-rect + g .svg_select_points_r {
+  cursor: ew-resize;
+  opacity: 1;
+  visibility: visible;
+}
+
+.svg_select_points {
+  fill: #efefef;
+  stroke: #333;
+  rx: 2;
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-zoom {
+  cursor: crosshair
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-pan {
+  cursor: move
+}
+
+.apexcharts-zoom-icon,
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon,
+.apexcharts-reset-icon,
+.apexcharts-pan-icon,
+.apexcharts-selection-icon,
+.apexcharts-menu-icon,
+.apexcharts-toolbar-custom-icon {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  line-height: 24px;
+  color: #6E8192;
+  text-align: center;
+}
+
+.apexcharts-zoom-icon svg,
+.apexcharts-zoomin-icon svg,
+.apexcharts-zoomout-icon svg,
+.apexcharts-reset-icon svg,
+.apexcharts-menu-icon svg {
+  fill: #6E8192;
+}
+
+.apexcharts-selection-icon svg {
+  fill: #444;
+  transform: scale(0.76)
+}
+
+.apexcharts-theme-dark .apexcharts-zoom-icon svg,
+.apexcharts-theme-dark .apexcharts-zoomin-icon svg,
+.apexcharts-theme-dark .apexcharts-zoomout-icon svg,
+.apexcharts-theme-dark .apexcharts-reset-icon svg,
+.apexcharts-theme-dark .apexcharts-pan-icon svg,
+.apexcharts-theme-dark .apexcharts-selection-icon svg,
+.apexcharts-theme-dark .apexcharts-menu-icon svg,
+.apexcharts-theme-dark .apexcharts-toolbar-custom-icon svg {
+  fill: #f3f4f5;
+}
+
+.apexcharts-canvas .apexcharts-zoom-icon.apexcharts-selected svg,
+.apexcharts-canvas .apexcharts-selection-icon.apexcharts-selected svg,
+.apexcharts-canvas .apexcharts-reset-zoom-icon.apexcharts-selected svg {
+  fill: #008FFB;
+}
+
+.apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover svg,
+.apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover svg,
+.apexcharts-theme-light .apexcharts-zoomin-icon:hover svg,
+.apexcharts-theme-light .apexcharts-zoomout-icon:hover svg,
+.apexcharts-theme-light .apexcharts-reset-icon:hover svg,
+.apexcharts-theme-light .apexcharts-menu-icon:hover svg {
+  fill: #333;
+}
+
+.apexcharts-selection-icon,
+.apexcharts-menu-icon {
+  position: relative;
+}
+
+.apexcharts-reset-icon {
+  margin-left: 5px;
+}
+
+.apexcharts-zoom-icon,
+.apexcharts-reset-icon,
+.apexcharts-menu-icon {
+  transform: scale(0.85);
+}
+
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon {
+  transform: scale(0.7)
+}
+
+.apexcharts-zoomout-icon {
+  margin-right: 3px;
+}
+
+.apexcharts-pan-icon {
+  transform: scale(0.62);
+  position: relative;
+  left: 1px;
+  top: 0px;
+}
+
+.apexcharts-pan-icon svg {
+  fill: #fff;
+  stroke: #6E8192;
+  stroke-width: 2;
+}
+
+.apexcharts-pan-icon.apexcharts-selected svg {
+  stroke: #008FFB;
+}
+
+.apexcharts-pan-icon:not(.apexcharts-selected):hover svg {
+  stroke: #333;
+}
+
+.apexcharts-toolbar {
+  position: absolute;
+  z-index: 11;
+  max-width: 176px;
+  text-align: right;
+  border-radius: 3px;
+  padding: 0px 6px 2px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.apexcharts-menu {
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 3px;
+  right: 10px;
+  opacity: 0;
+  min-width: 110px;
+  transition: 0.15s ease all;
+  pointer-events: none;
+}
+
+.apexcharts-menu.apexcharts-menu-open {
+  opacity: 1;
+  pointer-events: all;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-menu-item {
+  padding: 6px 7px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.apexcharts-theme-light .apexcharts-menu-item:hover {
+  background: #eee;
+}
+
+.apexcharts-theme-dark .apexcharts-menu {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .apexcharts-canvas:hover .apexcharts-toolbar {
+    opacity: 1;
+  }
+}
+
+.apexcharts-datalabel.apexcharts-element-hidden {
+  opacity: 0;
+}
+
+.apexcharts-pie-label,
+.apexcharts-datalabels,
+.apexcharts-datalabel,
+.apexcharts-datalabel-label,
+.apexcharts-datalabel-value {
+  cursor: default;
+  pointer-events: none;
+}
+
+.apexcharts-pie-label-delay {
+  opacity: 0;
+  animation-name: opaque;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+.apexcharts-canvas .apexcharts-element-hidden {
+  opacity: 0;
+}
+
+.apexcharts-hide .apexcharts-series-points {
+  opacity: 0;
+}
+
+.apexcharts-gridline,
+.apexcharts-annotation-rect,
+.apexcharts-tooltip .apexcharts-marker,
+.apexcharts-area-series .apexcharts-area,
+.apexcharts-line,
+.apexcharts-zoom-rect,
+.apexcharts-toolbar svg,
+.apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+.apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+.apexcharts-radar-series path,
+.apexcharts-radar-series polygon {
+  pointer-events: none;
+}
+
+
+/* markers */
+
+.apexcharts-marker {
+  transition: 0.15s ease all;
+}
+
+@keyframes opaque {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* Resize generated styles */
+
+@keyframes resizeanim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.resize-triggers {
+  animation: 1ms resizeanim;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.resize-triggers,
+.resize-triggers>div,
+.contract-trigger:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.resize-triggers>div {
+  background: #eee;
+  overflow: auto;
+}
+
+.contract-trigger:before {
+  width: 200%;
+  height: 200%;
+}</style>
+<link rel="stylesheet" type="text/css" href="css/2fe913c6.8c1b690b.css">
+<script charset="utf-8" src="js/2fe913c6.1cf611ac.js">
+</script><link rel="stylesheet" type="text/css" href="css/0441ada2.5aac38ee.css">
+<script charset="utf-8" src="js/0441ada2.a5e3b529.js"></script>
+</head>
+
+<body>
+    <div id="q-app"><div data-v-00edb6ea="" class="q-layout q-layout--standard" style="min-height: 936px;"><!----><!----><div data-v-00edb6ea="" class="q-page-container"><main data-v-f2864f12="" data-v-00edb6ea="" class="q-page body" style="min-height: 936px;"><header data-v-37b55f64="" data-v-f2864f12="" class="site-header"><div data-v-2663297b="" data-v-37b55f64="" class="box-header"><div data-v-2663297b="" class="site-container"><div data-v-2663297b="" class="row"><div data-v-2663297b="" class="col-auto"><a data-v-2663297b="" href="/"><img data-v-2663297b="" src="img/logo-verde.7f4588fe.svg" class="logo-gira"></a></div><div data-v-2663297b="" class="col site-box-menu"><div data-v-2663297b="" class="row q-gutter-md justify-end"><div data-v-2663297b="" class="col-auto"><a data-v-2663297b="" tabindex="0" class="q-btn inline q-btn-item non-selectable no-outline site-bt-header q-btn--flat q-btn--rectangle text-white q-btn--actionable q-focusable q-hoverable"><div tabindex="-1" class="q-focus-helper"></div><div class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><div>O nosso Modelo</div></div></a></div><div data-v-2663297b="" class="col-auto"><div data-v-2663297b="" class="site-header-divisor"></div></div><div data-v-2663297b="" class="col-auto"><a data-v-2663297b="" tabindex="0" class="q-btn inline q-btn-item non-selectable no-outline site-bt-down-carteira q-btn--unelevated q-btn--rectangle bg-primary text-white q-btn--actionable q-focusable q-hoverable"><div tabindex="-1" class="q-focus-helper"></div><div class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><div>Baixar APP</div></div></a></div></div></div></div></div></div><div data-v-37b55f64="" class="site-backdrop-header"></div><div data-v-37b55f64="" class="box-header-text"><div data-v-37b55f64="" class="site-container"><div data-v-37b55f64="" class="row"><div data-v-37b55f64="" class="col-md-6 col-xs-12"><p data-v-37b55f64="" class="text-white-50 header-destaque-verde">PRODUTOR RURAL</p><p data-v-37b55f64="" class="text-white-110">100%</p><p data-v-37b55f64="" class="text-white-48">da necessidade de crédito para custeio de sua lavoura.</p><div data-v-37b55f64="" class="site-box-center"><a data-v-37b55f64="" tabindex="0" class="q-btn inline q-btn-item non-selectable no-outline q-mt-lg site-bt-down-carteira q-btn--unelevated q-btn--rectangle bg-primary text-white q-btn--actionable q-focusable q-hoverable"><div tabindex="-1" class="q-focus-helper"></div><div class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><div>Conheça o Gira</div></div></a></div></div><div data-v-37b55f64="" class="col"></div></div></div></div></header><section data-v-ae542f58="" data-v-f2864f12="" class="site-benefits"><div data-v-ae542f58="" class="site-container"><div data-v-ae542f58="" class="row q-col-gutter-md"><div data-v-ae542f58="" class="col-md-6 col-xs-12"><p data-v-ae542f58="" class="text-grey-24">GIRA, UM PRODUTO PARA O PRODUTOR</p><p data-v-ae542f58="" class="text-black-34">Veja as vantagens de realizar o custeio de sua lavoura direto com o GIRA.</p><p data-v-ae542f58="" class="text-grey-16 q-mt-lg">Criado por profissionais com mais de 20 anos de experiência no agronegócio, a GIRA é a solução para as dificuldades de acesso ao crédito do produtor rural. Processo digital, fácil, rápido e sem burocracias!</p></div><div data-v-ae542f58="" class="col-md-6 col-xs-12"><div data-v-ae542f58="" class="row q-col-gutter-md"><div data-v-ae542f58="" class="col-md-6 col-xs-12"><div data-v-ae542f58="" class="box-benefiti"><img data-v-ae542f58="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABHNCSVQICAgIfAhkiAAABNdJREFUWEe9mU1sE0cUx9+sQxo7JDEgpGJajFUQH5JNkFoJDlDKpQQpTThQLqka2kqAqEQ4ABJIECqBRHrASEhQiVKq+oB6qS0qARe+pR6o1HwcSJVEiaG4CBDYTbRASDy8N+vdrB3bO7OmmUvWzpuZn/9v3ps3swxctprh5YtZtroFON+AQ/gZZ35g0CiG49DNGU/jUxoYu8G18cTLUP+Im6mYUqfhRr8vm90DWWi1YGQHQGjQIK5r2ikIdRO8VJMDNME4dJBaUiOXNkJVISoL6ghYMxhu14CdfAtghcioIt+uL+mLl/vBZQF9Q5EjuJ46K1SsfHcGnfoHvUdLGRUHJJdOTqJqrP1/hbMG5xd0j2dvsbVZFNA3GP5p5uBMSoRc0re9UJBpgL6BSCcu4iMzo1zBLByO6kt785ZUHmAuIFA9+RacFYDk65R8B0dLvsUeOFOAYt1lh1Wi9Vt/G5yYtw96X/0NsbGEAF1X8yE0z94IwaoAHH92Fo49P+OIVGCQ1j1ayFyPFqAb17bVt8AP878rCbD2n88FvHKzudoAdKEedWvQ6qA/eAXqtdnTGG6/+BM2pb5WZst1sFQUgG7UM2durt0IF9+lPJ7fXKtnBbURMCbgX8p7q42n0NUu117+L8S9GwFXM6pKtMlqCg5XLfLOMlQwKoLC3k6nY3D8+VnIZEddjUudsp7xEPMORToYh+k+khjWKUgoQGgduoXkDPYy72A4zoC1SPDkmTjBmcaVQHLgCeYdCN9gjH2sAkhuvRL4UUSxTHMLyTm/yTCClQKEoAiOIFVabDQBOx4fVukiKnPmG4xwlV6H5uyCg3N3qnSxbJtS38CtF3eV+ioBknr3gpdhZOIh+PE5WLUQkvh8f+JfscVRIwDan+l/PeP9lp3xXA8rk02KgAPhbjzYrJLpRXvv+1UL4MDT7+HgnJ3QVv8ZTrhZfPdFnRFnv6ArHyDw5cA5OJ2JQWZyFLrm74ffx67Dobm7YMeTwxD7LyEzHbqY9ygFyR/v/Qq3Xt4VRQEpuAiVosnWez+yXGc+019SjQAbPHWwqnq5WLeYMWDbIzraODcRJLJphtybCt0Rox57ZlQoNCEl5GKApBa15ERK5MFLY9fE56sLz0PtkJTDMEYozUgmaoIgt9kBd6PLVyQ3ibVFgUOq7nvaJYDuYRFBnz99+JWAWvNgq0hL9Cy7T4tELbvV2QELnUOBQkFhKDb1bLdL57Y8gpaNZrHV0SA+iUCxu9h59ZS3WHm/ybkKxwDRl/Y1KpVblKDXeY104rZJ14m5otVesI7gpA3lJqaguBo4X7RAlQWWXH8ZLPsXU9mvXPITZNe8/cpKUjLf9miP3BFgWslPP98o+x1VNJWiSrq59hOIVC+DcIl9maB6X/XDJf26fHIGsNSjufKOnXhgb8WvfpN1V6GdWUC4OihZg5U6duYMKjmfuP1hU2wOB3fTEJW8gEp+WfGESgPwn/HA3l7YpdzlUXTmIBHO4+mQvjyylJyJe5oi9zF2FWUvMFHN8jlSyZuGcQbrqfaKLjCtSSkFTWQ7MOapTiqbzCVAM1imRPUqLSpzV+2oYN6EJihwvESXK3KnIpT34JqOy4KZ/dQAbbS51xCt4jUEx9cQdLluQuNGjwcduiw3X0PE3b6GeAO/IiS9pxKaoQAAAABJRU5ErkJggg==" class="icon-benefit"><p data-v-ae542f58="" class="text-black-22">100% da sua necessidade de custeio atendida</p></div></div><div data-v-ae542f58="" class="col-md-6 col-xs-12"><div data-v-ae542f58="" class="box-benefiti"><img data-v-ae542f58="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABHNCSVQICAgIfAhkiAAABQhJREFUWEe9WUtsVFUY/s9MM3SGYIshxNAoTAREkhlqggtN8LUCo7ZuxAQNJRgfceGwsCQYpWg0sSysiURJNGIsC904VRNYKUoTFmLsYyGGkjISRqNEZ6wMTW3n+H+nc27v3LmPc+8M/Ju59875z/nu9z/PuYIiSvv0pnWimughKR/gKTqFFJ0kqFtNJ2lMClniqxIJcUrG5kZm0+cuRllKhFKa7u5MVasvUZV6LTCmEzBoilG+Eou9S+kxgDcSM4AamKQc2DKa2XsQs0pDpkADAbZPZfpiJN5pATAnZGZR7qmsn8z7vbAvwNSF7EH2p4EmGfNXFzRQuX3ikNcgd4Aw6cICsyb6ris4a3J5rBKP73PzTVeAqanMxzcOnEbJINdP7nES0gAwdT47wE58MCxz25JbaVv7Vvr+2g80OvtjWPXF8ZIOVTZM1LlUHcBaQDB74eWR5Q/SZ7cMKcVSdYaOlIbpSPk4lfk6nMjH7YGzBFD5XXU6arTe1raGfl57og7L+Nw5uvfSzrpnHbEVlElspH+q/9LE3C9u2EuVeCyt/dECGNW09hUAEEB/nS+qX8g9l55QQHA/uOplenT5Q+r5c3+8SsMzX7qTazP1IsAm2dOrPLXiMTq6+g11i8Vxv724l05fO0vF9CiBPS0auIf5LRYVwFawpxcCQAADQ4Or+ulZ/oUfnlzzEZ2ePasCCYwCoK/UWNQAfwpdW31mzybuUIHy9E09hOtPZ0boMIMFqy927KLtl/d6+d/SrFy7OaLvEuhKYgsJBEfLRQcOwD75e47KCzNUYP80jexqfC4tkheyOSEJtfa6yJlbP7eCJewCUtA+kZzK5AWJnrDKpuNPdrHvcZC8+df7pirWOElyRCTPZ04JIe4PrW2o8MrNL6iRkQBK+Z3gCG5pgDhxNwMQnblITWWlIRmuwxAISCsQBMPXV79ViVqLTtj2Z2HWiwwQSffo6tetymBf9L3yMO2/cjgQB+bYxS83yj7qUfaITZwZ443NlsDZbAMw8YmuD2lLYpORGphF4ga7WtD94AXXtnWpBI7c2CBSjhsFCZLrAXb245xo+68MKpPqkmaEkAdBD90NBH55YOXzlqpXXZYIEr80g7d8mwu8nak7CztUokVjYK+tejWYCmCcglQDfwRr9yXvVn/DL3f+lvM072Ka8UjUqKNgziloSHcUn/Fk8aur37A5X6urFih3mWUbuTbvp85aw4CyhxfxqyoqUXuVOl303UyoOxRUCSweRgAIwDxbLdtkqtTh3i1QYD4vMxbmL9PmwsMEF0CXYiowP0xqlHI4QCobJrt92y2nM9uBaKdHm492308ADFsAE9aseeztVq1hvch/djgX0l2y8zlSx2YOGEh2mbeZC/8VzRirX6DMbf86tP2BLb99M+QE+dbfH0SqsYEu0dDyQ2Ox7XdlER0JOmG7IKehATDt7QJBLQ2w2MOjum0nb9h7+dEXzskQqbqvQ9bv/3MwuCMOgah+qNe2szbKa3+iA8FeriJj8FIM2rhrPWbyGDO5u+UAfCeUn/CGvc85xO/wiI8JbhRIBheP54wPjywmI57ThGLexax2fdMDTBy6NOTIUEAaB5f5tKivqQNMa06koPlqjmMeR8DNAi1zKz9UaYsNmZxVBzJY9+IaKEk+RA/X5PLXgHH26bwpML1uOIA2tLXPEL3qM4TkzxA4XNegGQxvdHBYrj9D5KN+hvgfYbRRvSbdB3kAAAAASUVORK5CYII=" class="icon-benefit"><p data-v-ae542f58="" class="text-black-22">Pague com parte da sua produção</p></div></div><div data-v-ae542f58="" class="col-md-6 col-xs-12"><div data-v-ae542f58="" class="box-benefiti"><img data-v-ae542f58="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABHNCSVQICAgIfAhkiAAABCdJREFUWEfNmT9MU0Ecx3/3CoWWAJU4KCQIAZSlBRPcJKgTJio4MYgRookaBsvCoDHAoAOLdUBdjJjA4GQxDm6CsAGBwiAKBGIiGmO0hVCgoT1/9+h7vrav9+49KnhJk4be+92H7/3+3T0CFkfucnUZidmbgNIzaMJFKHEBgVrZHIUZSmgQvwWBkBEqRYa3yudXrCxFTD20XOtyxmJ3IAbNKoyoAYQGCfxhSXoM5TMMXmiIASpgFLxMLSHL6SehquATBTUEzF10t0lAHmUALBkZVaTt4co5P+8f5gI6lzzd6E89e1SM/ziBnnDFbG+6SfqAbEujUVSNtP1TONU4HQjbbJ16vqkL6Fx0v9g/OIUSISvn2pMFSQF0Lnh60Im790e5pFUo9IarZhNcKgEwHhConvVRmlUM7pzjML45BaHYugVD9LI2cP4Cyn4XW7YarQzsbtEtuJrfJEN92JyA86s3LABCMGyTyhV/VAGtbm0yGCOajXyCsc1J6PrZBx77CTjtqJNBn4SGxIA1W70LaEE9LdiXnVVUbBKhJmB6+yPU5lRDveMUXMw7By4pX4W6+eM+DK6/EYFUVZQBzaingB2SCuRtZEqVZhcjUJ38qbFXpwV4u/EeWr6zYiQw4ioqgNO82sqgSrOOClgVmzIX+WwcQFi7MaJPEtaVSFE7Cw7d0Xe4CzoKr4itbGJW4+p1WX3eiNki5cSx5PESCqzW6o6NioCJZcWnPvz9DB78esp9gBLoJI5Ft58A2c0NOuNAAYEOE8eCe4QQ0vBfAlI6SjCCuQFiVUGWC3mVZHBt2DjlYKAQ56KH8hzBLCCDavx6HQpt+Xga4JqG8a0pQ6fNOCCrHseyS4QiXyQv4ha7Z/BgU5MpH2Tp417RbajP3S1vY1uT6ne9NfKW0i6NDTcNZDxItID9WHuZoq+O+OBC3lldDXiA6CKjGU8zWsAg+mN/cBA6XK0JNVlLygWU00yGE7XcwWCz0Jp/yTAAjHxQTtRGpc5sFAci89DyzQsN2M2wYEk3gtE1Oc3wUpFc6pgBXqCYBWT22NbObs9zFRxCOG7rhQESrpqrNWy3rAAa7i1OMKzF2nYr3rCu4HOFycYPCDCEbX8Za/sNW/4DAUxp+Zlsu21/iorvSp5zE63IdurNYdHO8qTOUNVjvyUcO/HA3ox/eq19qBDPFCxluGwFVllSngtgALEUoz/SHTvjs82cTzJGrBgyOrgr81DJAVTyWsYBuAbpSzywtyVP4V0e+fYPEuFsNq/w5ZGq5H7c0+hsq1ZF0QtMVDM1R+7RBULYT7Xt6QJTBWApaCfmxZhnp+6UZG4SNISXor5wluQTuas2VDBhcQUUKF6ip29ydYGxtqJP+0XBFBvmADUrx19DNMuvISi+hmCX6wo0wuBphF2WK68h/FZfQ/wB8wfxrjCGs2UAAAAASUVORK5CYII=" class="icon-benefit"><p data-v-ae542f58="" class="text-black-22">Até 30% de recursos livres em conta.</p></div></div><div data-v-ae542f58="" class="col-md-6 col-xs-12"><div data-v-ae542f58="" class="box-benefiti"><img data-v-ae542f58="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABHNCSVQICAgIfAhkiAAABJ9JREFUWEfNmUtsVFUYx79zpyntYO1IDDElChNeajJjSVgIkSiskCitGyChiSUs0GjidMMCQygxumBjWYCPhIgJLHTjFEhkJ1ATTYTQxwIMbcpIaNAY7dgwkNLO8ftf5lzO3LmPc+cODd9mHvfcc373/z3O4wqq01omX1whys1dJOUb3EVKSJEiQZ12d5KGpZDT/G2ahLggrdnB++nrN+sZSkS6abIzlSyXP6IydTswph0wNFmUL1nWUUoPA97IzAAVmKQc1DLq2b8Rq0oDpqChgC3jmV6LxOcNAHMjs4pyT2nVWD7ogQMBkxPZQxxP/TEVC75dUH9p5ehhv0begHDp/DyrJnofK5zTuTxZSiT6vGLTEzA5nvlm4eAUJUOuGtvjFqQGMHkj289BfGhhlHONIulwafVoVUhVAVYSgtV7ZHdXjtg/Lt37jQpzUzTEn0P3rtAf/P3xmHxHT5xHgHbclSfd2Xpt+Y/0QlNHDQuAP/v3S4a93GjO6VLCSqt4dAD9XHt+2Qna1LLeFwKgu+70UbE80zhQzdUPAX3Uw6Ujz+6nD9p3Bw4+zXAbbu1opNsdFW3AoMR4a/Fm+u65gVB1Rmav08ZbO0PbZZvXUmbRGlretIyyi9ba6ntaRUUFeNVvbm232mgq/XNNH3Aprum2806Ozt39qaYtYrinbTv1PL3dBlOGPjomX/MDHOaMXiewKrHmm5EcvgYFoaRuQ/cv18TmseJp2v/3kap2CI8DS96nlOth0Ah9bL2913fccmI2LVonsjkhCXOtr21qXU/nO05UXUfcHWegA8+85/zvHvBjBtOvuwfweiC9jRTUJ1rHM3lBoisseLyyeevUXvp66SdOGTo1c4b2/XXQ7gpuRYkKMr+QUPdIkoOi9UbmghDi9TBADPjr899XxR3qIMqMUhfuhSowuBYVQI+30dnfnbAIjL/KTVLKi4Iz2DdB3NDIQCipkkO5VKkL4E//+cK+TXcvYPC/Dqy39RWHF7kiOZ6VYerp1wGHjHz7qS1UeDBlu1TFqF4PdQXhyg9TPY56UBLJYVLcIwP6Pcwv7H4orNysVIXLT/03SLgOA9y+Pw/anybGLs4M88bmFZPGQW2UYoW523R65qydvVhQvMozDApyT1uXvdBAIhmblCPGSRLWqVdBh/sjAbkGsZPEtMyEAeK6vvKBei8V3jS5LSBHUGYMCrXpKF9xTUQCweKqhz7sQm0y1ZkC6qUF6sVd1NpTHQZvVKKolQ8S5eXCNtPn8m7HCVJaPdYZutyKMoo+Zy+eiFkY9OVWZcF6k2HaowC52zYQsMjL/hVY9ocu+aMANwywZskPiofL/tgqql1gDBc76gGratvJG/Zu/uuHKKq526opDXuU+sxv21np7YneuKsnZiVPspLv1qdAvXfJb3nD3uu+O+jwiLdyCwXJcIlEzvjwyFFyIc5pPM5jdBVNDzCxMY5VIz0cX+TZtjfWAabTKUrQXDnHOY8j4LigRT4UHSg1WQMmZ9WhClY9uQIlyYfoERe5PLdyTOdNwdS40QA12spriG77NYTk1xA4XFfQDMMbHRyWq9cQ+XpfQ/wPDEwqvdAOPy8AAAAASUVORK5CYII=" class="icon-benefit"><p data-v-ae542f58="" class="text-black-22">Sua produção é a única garantia.</p></div></div></div></div></div><div data-v-ae542f58="" class="row q-col-gutter-md q-mt-sm"><div data-v-ae542f58="" class="col-md-3 col-xs-12"><div data-v-ae542f58="" class="box-benefiti"><img data-v-ae542f58="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABHNCSVQICAgIfAhkiAAABPZJREFUWEfFmU9sVEUcx3/ztpbuEmAhxGgbaRsg1MMuNeLBhD/qSRKBetEDJJSYaI0Hl4OYaIAS48F6cD0AwUjE2B7w4hZN4KQoB0kksbQHIS0phUCAELJL44K13fH3HXaWt7vvzc5s//hLSMq+92Y+8/39md+bJ6hOaxrvaBOFxh0k5Us8RFxIESdBnWo4SUNSyCz/lSUhzkpvavBh+6Wr9UwlnB4a74zHCoX3qUBdJRjbARiaPMrkPe9Lah8CvJXZAWowSSmoZTVy+E2sKqVtQWsCNo0luj0SX8wBWCUyqyj35NeMZEwLNgLGriQPcjz1zlIx8+OCevOrhw+F3RQMCJfOzLBqonte4UqDyxP5SGRvUGwGAsbGEt8sHJymZMg1I3sqBakCjI0mezmIDy6MchWzSDqUXztcFlJlgMWEYPX+T5Ov+xPnMaCKu8L4PGSr62qz+YjXruOxBDgfrl3mLaFcYdIVEDtRydWPAOtQb1N0A723bCdtW/wKZRmif3KQPrz7uRoO1z5a3kOboy/QxalL1HP7AA1PXXYBLamoAMPU27VkOw3/c7ls8GTjOvps5Qdqcm3nHl6gT+8dpYl/b1IfXwO037CArTfecoMsqqgB/wzaW8+0HKdNTRtoYvoG/fj3LwQ4Pxjct+9un7oGNT9e8a5RpXfu7GelTxFcvzH6PK1v7KB4ZKkao8p47+aMfk6gK/FmGpEcVaYBg64B7lVWZdUTzXTsyU8ozpPWY1Af4wRZITLVLqJXkikhCXutE+Dh3AAr9zOdaT5e9ty16ZvK3XArFIXqJjMBSkF7RXQskREkdrgCwlVIDA2owfC7NrgSXjBBGgFJDoroaOKsEGKLKyAUevH6G8q1yUXrVGwhqXbyP8Tpdwzfc+eAijcTpBFQyl8FZ3BgggDYFIO4DsjD2X61tl1Lt1NrQ0vZOm0gTYDozEVsLCnDYsQPiKRALUNWu1gtSCMgT2QFiDKApICtamimk0+nawa/fxEmyNqAo4khfrFZH6QKdoRWBkKdO93ytapbb95Kqe3r5FNpFV+2piFVOHCcwiY44889uBA+hJQXjUmin0S5wNYFw0RHsgNq8L9aT9eERFjoLIYXAotyCKJEkpjKjH4Ou0Tfyn1lwzw7sVVl71dcpCuVhML6N+zFA/dPqed/Yk/AA7YmVZkxFGr/QJjw/DPfqxjUSg5wacnNTNLv/LvfkN2A0a7E32qvZtVduhtVqE1bXeVKoQJU05kMkJbxjQoE11AOsLljMbiGBeAa4sxFOT2v2urwn5ghUSohkTj+7e23B3+oNgvg2JPh0jauh4BE8UaDUJdxguTXjnQa262wgRGT2C1eW/yyugWl4u3b+1XSwACVXNRB/fcH3Vos/4T+dqvYsF6Fd2xX689s3UZBwW0Mje7EsUGtnDbHbX8b2v66W364UMfXLGGqNalq+XHLo7bfSUVbtR3vK6mH58peO/mFvYt/+sFxwDm+Pey1szjNfLzdWa+g1ou7HoiVPMFK7rYeeE5ulN/yC3t35VCmw6P0wkEyXCSSsj48Kim5EOc0AW71q2h7gMlq2tdIS4/n+Aihe1YHmKWJUIKmCynOebQi1sU8BDTHm3Y63+Clbc6qaypYNokGJcmH6MFNbqh6vLdyTGdswfQ4boC+2YufIbrUZwjJnyFwuK6hGYY7GxyW688QmXo/Q/wHpCV2vZoGupgAAAAASUVORK5CYII=" class="icon-benefit"><p data-v-ae542f58="" class="text-black-22">Negocie seus insumos a vista com os seus fornecedores.</p></div></div><div data-v-ae542f58="" class="col-md-3 col-xs-12"><div data-v-ae542f58="" class="box-benefiti"><img data-v-ae542f58="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABHNCSVQICAgIfAhkiAAABUdJREFUWEe1WV9MW2UUP1/LkD/r2m0EDEQHcVNc0oLJTDRxU5M9oFGpD4pR3MCZiVnUThNM3BTmZA/zQfZAhg/EGdFEXyybxkUTRcmiiUuGkGwqJQyVMTpkZZUyWXs/z7lw79py/5xb3ElIyO255/t9v/P3+66AHKVgrLpSKPn1IOUDaMInpPCBgFrVnIRBKWQM/4uBEP3StdB3terX87ksJRy9NFbrK1KUV0CBoA6GawBBgwvCCZfrCFQNEniW8ABqwCSEiC2WZXMlZBU6uUBtARZE/E0uEO/9D8CyISOLsjmxcThstWFLgEWjgTaMp/YVMmb9uoD2xG1DB8yUjAGSS1MpZE003VBwunF5LOF27zWKTUOARRH/B7mA87o8QH9/JC/ksC8EuXG4OfvFZQCLRgLtGMRt3BW2Fm7BSiNhW+HdsMfXCD4E+FG8D3qv9Kkmhhd+h1klzjMn4UBi01BGSGUAXEoIZI8n75cehEbPY5bK48kJuPfPBj5IkI+nJ851gGrcKWPcbCXmTpb3sHZCjLZE32LpolIs4XZVafGoA3Ti2n3rXoQ31rZwF1T1Tsx9C63T7/LiM83ViwAdsLfH+wwcLml1BE5THrh6GuomdnHe1VlUAd4I9q4o/8Chy93wkncHVOSVqqAcAKR+riaMBvAMt7dyEuNSagaej+6DrxOnoKesA55e/agKkBJm8/jDHAbVgQMB3iVoKnGl8ik5bOXWvHI4t+GrDL2p5DSU5ZXoz85eG4WnJkMQuTYOr659Dt5ZR+37urwQfRN648dt1yIFxb1QJQpHAyEhgXqtrWQnx0QqCsHJFtWNOzxBOPPvOWieeh0mk5fgYEkIdq9pWGbTiZulgL2iMOIPCxD1tuhQIZvBaOpv2P7XTphSZlQwn8RPQFzOQVdpGzxRXGdo0gmDEmSfKBzx9wsh7ucAJJ3sGBzCTvHsxddgBF16+6pKaF//MgSLtxuaoxZ45/hD3KWoQ30vMIPZCUKWjWrgN/OnoOPyUTiyfj/U3FRtCsCJe1UjmCiiKBKQ7C2holkdpLKyxrXa0tQXc99Bw8XMpLFb2zFAMkggiUmaXLhCmds6fdhBT160jC72D+LBpoa7kAZwaOE3di+mgv3D/M8wMH/ayTLoYvmL4yTRMpnY2LCqQmXTSmgjDVgXf7zlM5xqnuT14iWDapI4KTPpWRzDGW93dD98Odevlp9tON1obu+a/VhnLJB/B3SXvQ01+dVqgaYyw5XFMuOgUBt1Em0xGqkOzXTrMXYWOw4Nr9lSPnYfOw7VQu2k1XHGLGKPJmizcYzisWPmKItEtdWRJidRKGPNWElfjQrxTxhvZhlOobEZdWyPAZggiU3Dtexxi0Z76iJWQjE2gNlqp8dqd+nj1tLAeh4X95oBoCmGYtBKKEu9bo9t+WGMXbM49lfS2M8a+Tnnj/Q2drKiB7YWbLHcTN2FXeZ1cdnIT6YWx35TFglkujR66jNOdNTCqJWRPFL8IHx6c6euTq7vivWq7GpiUbR19kg349iJB/YgPvqck2KUBJQM5HajKUULCfrtHnS9bVLoi5odO5cUnJxPNNcbBb2WVJauzGbC7uCu6SOTx5DJnRwmqVNQOzMSq9+W68sP8cDelP3c6vIIg4gHkrMRax0E53aH2JdHOpMO72lyAmrg1nQ73AtMSknTGpkTMIBZnKeaVnSBqS9MJSiphDDnaRxeKdBZHOU7E3muTs5dtS2DGexoQEHiJbqzIZeGT4zpMBeYtq4zgGlolz5DBNXPEBI/Q9DlugYaweBBhy7Ltc8Q4Vw/Q/wHxV14vVsmpnMAAAAASUVORK5CYII=" class="icon-benefit"><p data-v-ae542f58="" class="text-black-22">Avaliamos sua capacidade de produção e não o valor da sua propriedade!</p></div></div><div data-v-ae542f58="" class="col-md-3 col-xs-12"><div data-v-ae542f58="" class="box-benefiti"><img data-v-ae542f58="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABHNCSVQICAgIfAhkiAAAA5hJREFUWEfVmU1oU0EQx2dfSmwipVXEg6I0tNVekkbQg4IfVy82XvRgwRREFA+mlwqKtEX0UA9GUBQRbKFevJh68Vr14EHBfFxam9Ji0YMUbSi+amjfOvuSjUmavJ281md8p5Dszvzy353dmXkMbD6Ns52tzHB3A+fH0EQL46wFGARNcxzinPFF/LQIjE1wLTv+0zc5Z8cVq2nSbLDFaxiXwYBQAYZqAKFBg5iuaXfBFxfwpIcGKME4RIRaJMvVB6GqEKWCKgEb0/6wBuzOBoCVI6OKvFdvT8Ws/rAloHcmMID7aXCdillPZzCotyWHqg2qDCiWdHUVVWPhvwpXMM5HdJerr9LerAjoTfufqOCatSbwu/eQ+FPZj5AxlhRjEbI91Vs+aA2gdzowiJt4wMra8LZ+uNR8hgQnB93LjMGVhdvWczgM6R3Jki1VApgPCFSv+nNt60W4uuVCTXBy8K3vD+HmtwcqJU8WB84fQHPfGbOqaH276xkE3HttASayk3Bo/rRq7qLu0nxyPxYAKUsrLP9oS6gcWP6+eaZLPb9oqXOARPUk4NjSCxhbGlc7KhrR09QNPU0ngASIV6RU0QSkqicBaXuplF/uXSKguM/NgJGAH6h3q1hihwDjCLiPiaxEW3WL4CA9jgEijeHK+phnJhBhHMRdS3qcBOQM+pgn7Y8xYN0kunwUO7LE6IsDH2eeaf8EY+xoXQJy/ophBJMDxNEoFs4wyWXedIBT1XMcEB3+B4DT/jgWNoT7J6ezk1GMBVmi/oOk/o+Zej+o6/6qy2Uz9EARQfJ6+R28WX5fy+kEhz374YjnADXdwjOQJ/SOVNBWulUTWdlgW+lWPmGdQ1vNKufVMupPK1/g/Nfr5vRH22/A7oYdFU0RATOYsLaKtH/DUv7iBMKqsCIBrkn5xX/Npf1KFasVTaIgOv75nKnay52PocvduUbBZHYKDs6fUi1SQT0xsKTsxII9hF89t7Lw78rOPBWlPrFTuN/PPIX+hWFr9VSFu5yNSo6gkmetrInWR2ATrT5O/pqitD5GsWAPl/u0ah5FVZCqzUT/nY9i8yhCbh4VlCT0aegQVUZWWNbikdQGJqqpPiNrhM3gdRFeVwOz4FAcQStGBGNetICVh7kCNIOpfFRv0KKUXrVSwRJnEhQ4NtHpSa5pA+9W3NMxKpj0WxtgEW3+NUTIfA3B8TWEaK5LaITBQkc0y+VriJjd1xC/AULP9668GmP9AAAAAElFTkSuQmCC" class="icon-benefit"><p data-v-ae542f58="" class="text-black-22">Sua única preocupação é com a produção, não com o crédito.</p></div></div><div data-v-ae542f58="" class="col-md-3 col-xs-12"><div data-v-ae542f58="" class="box-benefiti"><img data-v-ae542f58="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABHNCSVQICAgIfAhkiAAABQNJREFUWEe9WU1oXFUUPvdNDJkpMaNI0QabhrZYhZlGqAsX9W9lQU3cqNCIKYqtVDDZZFHRpoousnFcVC1YrDRd1I2TRmhXtf6Agor5Aa00IY0SKVV0pjFjCMlcz/eS9/Lem/veO29Se1aT3HvP+e53z9+9T1Gd0jS9Y4uqNnaS1g+xiqzSKkuKOmx1mka10iX+VSKlLmhrcXih/eLlekypRIumO7KZavUVqlKXC0aqgEGTRcWKZb1L7aMALxIZQAeYpl6wJdIcPolZpYIUaCzApslcj0XqnesALAiZWdT7KtsmilEbjgSYmcofZn8aWCdj0csVDVS2jh8Jm2QGiCNdXmbWVM//Cs5Vrk9UUqk+k28aAWYmcx/dOHAOSga5bWJfkJAagJlL+QF24sNJmdud3sUZR7vLvl74IakKpKcjle3jPpfyAVwNCGYvXlqsZtrb/AQ9vuFheiB9n3HBl/9+RyPzn9OpuTNUrs7FK7Vn6Ce9gbMG0Pa76rQkWg+27KVDt75EWQYpkRKDe+uv9+m98inR9ErKanf80QUoOVqwdmzjG8zaIxJDNXNG5s/T/quvx7PpOeoVgAL2AO5s64e0s3GHEdz44i+uYczNN95VMw9z7v/tKcnmSg6LNkAJe6dvL9Bj7G9egV8d5WM7eW2Yfl363Te2uWETPXtzJ8EdABjgHp19Pp49N6hXAsYB+GNUbYWRwdv6fQCkBgHu9B0F6v9j0AYpFq7dDPBeha7EWm5EcBgFBn5qO+sLiARHFaqzjRmOA1xNLbar9FS+V2lCrTVKkD0c690ze+RHZdB6bOObtrvcE6NHK+pT6clcUZHqDAN4rvU47W7a5Q6//fcHdsqoVwCum/MnZGzxIu2ZfSF0s5r0sEpfyl1QSj0YZnB+65hvCOwFA0IKFsAA0CtIPc9c6TOq4Mr0heIIDg0QlK9zm467i9fjeyZwjuKTc8N0gPNjjXCgqMxkfq2ABmYEAX618L2dKpIKUs43d34SWXn2X32NhrgkBsUIEAqx4803cS5rXnPPmaVZGrp2hlC6hGXLtodM8HK22/5t62X9jgAUXGbkn/PGqOYjzo3yxWanF7kp7wV3hooQlyZMTP/MKcsLMFKP1mOhQWKqHI7BsOOIO3oAA0CvbJjyceMbs4MkLM3gWJBigjUVpa3/z8E4LMbxV7kDOnTLAXHQraSZiEQNkN+ycztHAn8Be/WIKVCwUWw4TOxEHVfqwCCYnGFHFnYiNfZMnZCkItmlDtpMgeK1ApAA6O2KwQj+juuUw9q0WD/mAKlsn+gQt1tewI7RtoZWOloaso8pCNRJVQc5vQQ778/4GvD0FbwBRMhq0+ptWC8jZUn8K1ifsQZ1tby8cu9oSTVHNraCvrDMDesWtP2JWn4Yl+TIsE2CuRc5yOLcwnu7C16aRCwCJFIGjloiAISINZUyw3qXPYz5rp18Ye/if30qMQpwuHJ2c1vvbce8a1G7UcIALJY1d2HYtXN1guR+YtoAGgtH4Iv1lMHYi7tjgJk8wUw+J2Hy+s3RH/OFvSeoL+rxqHDjQDK4VKpX/HjkMlnnO00iVg3vMd710gdMZlOWIxOAK/M7TM+6HjBdY3h5WKr2cswj/YuSeQTQMgdDodJgFSRv1bEM+gw5QEnzI7q/yY1ljmsr+3RRCszRlwygB8XqZ4gu+zOE5s8QeFx3QDMYvujgsdz5DFGs9zPEf07GYL2ElKo5AAAAAElFTkSuQmCC" class="icon-benefit"><p data-v-ae542f58="" class="text-black-22">Crédito se renova automaticamente para as próximas safras.</p></div></div></div></div></section><section data-v-14ba19cd="" data-v-f2864f12="" id="site-model" class="site-model"><div data-v-14ba19cd="" class="site-container"><p data-v-14ba19cd="" class="text-black-48 text-center">O modelo GIRA é mais fácil do que você imagina!</p><p data-v-14ba19cd="" class="text-grey-16 text-center q-mt-xl">O GIRA disponibiliza crédito ao produtor para compra a vista de insumos e custeio de 100% da safra, em troca da entrega de parte da produção custeada.</p><div data-v-14ba19cd="" class="text-center q-mt-xl"><img data-v-14ba19cd="" src="img/modelo.fcf4cb33.png" class="site-img-model"></div></div></section><section data-v-586bd173="" data-v-f2864f12="" class="site-how-we-do"><div data-v-586bd173="" class="site-container"><p data-v-586bd173="" class="text-grey-24">COMO FAZEMOS</p><p data-v-586bd173="" class="text-black-48">Processo digital feito para o Agro: simples, ágil e <span data-v-586bd173="" class="destak-verde">sem burocracia.</span></p><p data-v-586bd173="" class="text-black-40 q-mt-xl">Veja como é fácil!</p><div data-v-586bd173="" class="row"><div data-v-586bd173="" class="col-md-6 col-xs-12"><img data-v-586bd173="" src="img/step1-aprov-credit.88354860.png" class="q-mt-lg"></div><div data-v-586bd173="" class="col-md-6 col-xs-12"><p data-v-586bd173="" class="text-grey-20 q-mt-xl">Consultor Gira visita produtor / fazenda.</p><p data-v-586bd173="" class="text-grey-16">Consultor GIRA visita a fazenda, caracteriza a área agricultável e levanta o histórico do produtor, da área e a necessidade de recurso para a safra. Nessa etapa é apresentado o checklist básico para aprovação do crédito.</p></div></div></div><div data-v-586bd173="" class="site-how-we-do-second"><div data-v-586bd173="" class="site-container"><div data-v-586bd173="" class="row"><div data-v-586bd173="" class="col-md-6 col-xs-12 q-pt-xl hide-text-mobile"><p data-v-586bd173="" class="text-grey-20 q-mt-xl">Relação de troca e emissão de CPR.</p><p data-v-586bd173="" class="text-grey-16">O GIRA disponibiliza 100% da necessidade de recurso para custeio da lavoura, viabilizando ao Produtor Rural a compra de insumos a vista, sendo o pagamento ao GIRA realizado com a própria produção custeada. <br data-v-586bd173=""><br data-v-586bd173=""> Além disso, nesta etapa se emite a CPR com garantia sobre a produção.</p></div><div data-v-586bd173="" class="col-md-6 col-xs-12 hide-text-mobile text-right"><img data-v-586bd173="" src="img/step2-aprov-credit.4aadab3f.png"></div><div data-v-586bd173="" class="col-md-6 col-xs-12 q-mt-xl text-center show-text-mobile"><img data-v-586bd173="" src="img/step2-aprov-credit.4aadab3f.png"></div><div data-v-586bd173="" class="col-md-6 col-xs-12 show-text-mobile"><p data-v-586bd173="" class="text-grey-20 q-mt-xl">Relação de troca e emissão de CPR.</p><p data-v-586bd173="" class="text-grey-16">O GIRA disponibiliza 100% da necessidade de recurso para custeio da lavoura, viabilizando ao Produtor Rural a compra de insumos a vista, sendo o pagamento ao GIRA realizado com a própria produção custeada. <br data-v-586bd173=""><br data-v-586bd173=""> Além disso, nesta etapa se emite a CPR com garantia sobre a produção.</p></div></div></div></div><div data-v-586bd173="" class="site-how-we-do-tertiary"><div data-v-586bd173="" class="site-container"><div data-v-586bd173="" class="row q-col-gutter-md"><div data-v-586bd173="" class="col-md-4 col-xs-12 text-center"><div data-v-586bd173="" class="box-img-steps"><img data-v-586bd173="" src="img/step3.b2ed0f49.png"></div></div><div data-v-586bd173="" class="col-md-4 col-xs-12 text-center"><div data-v-586bd173="" class="box-img-steps"><img data-v-586bd173="" src="img/step4.463fa3cd.png"></div></div><div data-v-586bd173="" class="col-md-4 col-xs-12 text-center"><div data-v-586bd173="" class="box-img-steps"><img data-v-586bd173="" src="img/step5.172ea8c1.png"></div></div></div><div data-v-586bd173="" class="row q-mt-lg"><div data-v-586bd173="" class="col text-center"><a data-v-586bd173="" tabindex="0" class="q-btn inline q-btn-item non-selectable no-outline site-bt-down-carteira q-btn--unelevated q-btn--rectangle q-btn--actionable q-focusable q-hoverable" style="background: rgb(52, 52, 52); color: rgb(10, 220, 46);"><div tabindex="-1" class="q-focus-helper"></div><div class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><div>BAIXE SUA CARTEIRA AGORA</div></div></a></div></div></div></div></section><section data-v-d306f76e="" data-v-f2864f12="" class="site-provider"><div data-v-d306f76e="" class="site-container"><div data-v-d306f76e="" class="row q-col-gutter-md"><div data-v-d306f76e="" class="col-md-6 col-xs-12"><p data-v-d306f76e="" class="text-white-24">PARA VOCÊ</p><p data-v-d306f76e="" class="text-black-48 q-mt-lg">FORNECEDOR DE INSUMOS</p><p data-v-d306f76e="" class="text-black-32">Nós fazemos toda a análise e você só se preocupa em vender!</p><div data-v-d306f76e="" class="site-box-center"><a data-v-d306f76e="" tabindex="0" class="q-btn inline q-btn-item non-selectable no-outline site-bt-provider q-btn--unelevated q-btn--rectangle q-btn--actionable q-focusable q-hoverable" href="https://api.whatsapp.com/send?phone=553499190660&amp;text=Ol%C3%A1.%20Quero%20ser%20parceiro%20GIRA." style="background: rgb(52, 52, 52); color: rgb(10, 220, 46);"><div tabindex="-1" class="q-focus-helper"></div><div class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><i aria-hidden="true" class="fab fa-whatsapp q-icon on-left"> </i><div>SEJA UM PARCEIRO</div></div></a></div></div><div data-v-d306f76e="" class="col-md-6 col-xs-12"><img data-v-d306f76e="" src="img/provider.dc6d7aca.png" class="site-img-provider"></div></div></div></section><section data-v-03b3f017="" data-v-f2864f12="" id="down-app" class="site-down-app"><div data-v-03b3f017="" class="site-container"><div data-v-03b3f017="" class="row"><div data-v-03b3f017="" class="col-md-4 col-xs-12"><div data-v-03b3f017="" class="site-box-center"><img data-v-03b3f017="" src="img/app.7a5e7e0d.png" style="display: inline-block;"></div></div><div data-v-03b3f017="" class="col-md-8 col-xs-12"><img data-v-03b3f017="" src="img/logo-verde.7f4588fe.svg" class="q-mt-lg"><p data-v-03b3f017="" class="text-black-48 q-mt-lg">COMECE AGORA!</p><p data-v-03b3f017="" class="text-black-32"><span data-v-03b3f017="" class="destak-verde">Baixe nosso app</span></p><div data-v-03b3f017="" class="site-box-center"><a data-v-03b3f017="" href="https://apps.apple.com/br/app/gira-carteira-do-produtor/id1570311700"><img data-v-03b3f017="" src="data:image/png;base64,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" class="q-mt-lg q-mr-md"></a><a data-v-03b3f017="" href="https://play.google.com/store/apps/details?id=br.com.solution.gira.giraprodutor"><img data-v-03b3f017="" src="data:image/png;base64,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" class="q-mt-lg"></a></div></div></div></div></section><section data-v-3de0248c="" data-v-f2864f12="" class="site-footer"><div data-v-3de0248c="" class="site-container"><div data-v-3de0248c="" class="row"><div data-v-3de0248c="" class="col-auto"><img data-v-3de0248c="" src="data:image/png;base64,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" style="display: inherit;"></div><div data-v-3de0248c="" class="col text-right"><img data-v-3de0248c="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABHNCSVQICAgIfAhkiAAAAeRJREFUWEftmI1NwzAQhfEE0AmADboB7QZlAsoEsAHpBLABZQJgAtIJgA3aCdoNwntVHKXGzsVJHbmST7LyZ/s+n+/OdtQZpCiKCS5PKLzGIDkgFkqpXJVwXzFQWRimBCTtTaSAKwIWkcLtsRJg39lpa8FfKLpAueyr0Le9BEiwGcJ9XUtHH7g/91XUtb4EeK3htALE1Bz3r10V+rZrAtwA7srW4ZCR3wS4A+DIBAQcfXHra4mu9aUpvgUkfa4SAGZ44LI4iEiAO1A8onyi0HJ3KAQcTCTAwUBcik4e8A0jWxujY2RzqrUsLKOf4x2T+grlhX3Al3/gv2Pcs/3M6MM5U5IFp9yT1Vub2zN8V2bv5Q5piU9Ll+a227xQgGNaTHJgQDIAn5vqBQGUwIwZoQs51/iggLAQ/Y3KuSoR5J+gDt2g7tMHdYIBQjGnjlOo5d7mk1LiDwJYRuu3xWAjQDL5V4K6jOh3l1uEAsyg0LYcilnBBA0FyNz3YLFKNIA54GwnxQSo/0JUB/2GlSRZkD4u+kyyoHAAShaUtl1SouZaam6buOlkItYysSRkfmc9U9r0d9BGAnQtkYO9T4B9TX0SFnQt7H0Hf4z2+1/AjMJ4f6JzmCVk5tgiHcMSvn3wPJ3xyPsHN/uspFEeov4AAAAASUVORK5CYII=" class="q-ml-lg img-redes"><img data-v-3de0248c="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABHNCSVQICAgIfAhkiAAAAldJREFUWEftmIFRwjAUhu0EuoEwgTqBMoE6gTqBOIE4gTqBMIE4gTCBOoGwgU6A/9dLem1oSVKOI97x7nIWLC9f/vfy8tpsT7ZYLC70517jmM8J2KcYHrIsG2cG7jUBqDqEHoAfCSnnQk4BXCSqXo6VAuBIHDMN9sGRK9a2AdkIAwulYLI5KpDbBjwRIFC5CRBYqklh2wa8pJSUAIe6vkoJ8Ecw1xpzjXONItwWcl0Fccyqx+VQmXBR9El8AA7LqsRctwX81SR9QQHnNeUWkE8a+96bnRvaAH7Jx5ngCE+wCbKD0hpLpWSVk1jAVnAWQJAHup7EQMYAEtZOnXKamHw71bDNBqVj6uYloEZJ/h8U7hjAGzfnjCKPmowcq7OhvrxzF2Vy8iUkP0IB55qEHCrMwL2XVGuaD7V6NZAzfe/d3aGAlSPJhAp1KkV1hSIjAVZU1gLZ1bc+FUMB3SOJXKNNi7GuIFEtN5O3Xh9BgHKcOeHt6zO5F2PkIqoVFtLqtQWMCa8FehYgC9sBkj9phVgxSXuTCDD5MjNTgnedBA89V2vPb6XJt/x1fGUgaBcbJ01HHaWjqWDzQERbVul8NnHUwcgkFNulNss0ADSn5WaBJnbmKmTupUATAa/FKIiz2nPVO4u5IeL8LlzGAlpIHnaW1FkFapTjFYtVOWhdbQBtuMktcsxrgiNHydWgsJYdtgW0PlBxqPHW8NAEGLnZ8a6i4YZ1AdvOG/y7HWCwVLsQryvVf1aQ0yHqaX9DYtW5zV8BU6fSfYkOtoGkS+btQAo2FcRAxX/yB/7Xe6TzvPvmAAAAAElFTkSuQmCC" class="q-ml-lg img-redes"><img data-v-3de0248c="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABHNCSVQICAgIfAhkiAAAAYlJREFUWEftmMFtwkAQRbMVJCXQAaEC8C0Sh6QEOoADh9yADkgFSSoIqSB2BaEEqICkAvM/MghZs2YTdr1z2JVWyNiyn//Mn12PucEoy/IJP2PMAY8VjBwML8aYlangPhRASQgZAb9x5l4pYEHAUincASsBXhudthQsALrCXMOZdOhpIMNYOYaYU+llQgP+4qEjlosmJSvIrxiAPcCtL4U5FuACcPNLcDwfA5Ch7QDwRyvgJ+C4fIoDinFhuD07yeNlmzloDS/gaAY612mEcrEI2JRrNtq2AUcAeXWSrrqobUC6epYAHRSw5WAUBd8BvKlB5/U196wgSw7mf/1QZSaTYBxUPl0Cd1uV9WESH4DcTDxqVjDXHuIdAO80K2j9LvKRg2+Ci4sGF9fdSuUmWpa6KHVQenlVhToBhugspBD/ZSlNOZhy8JgDTduqtJLUFPBaZtjc6V5r20CAhxYwWxS+m+i+FMxM9TFDSG55xA+Xf6jLqHDnsj223yAE7/2M+eBwPzY859yy7QGUCFmktAGSvQAAAABJRU5ErkJggg==" class="q-ml-lg img-redes"></div></div><div data-v-3de0248c="" class="divisor-footer q-mb-xl"></div><div data-v-3de0248c="" class="row q-col-gutter-md"><div data-v-3de0248c="" class="col-md-4 col-xs-6"><p data-v-3de0248c="" class="text-green-24">Sobre</p><a data-v-3de0248c="" class="text-white-20 cursor-pointer">Nosso Modelo</a></div><div data-v-3de0248c="" class="col-md-4 col-xs-6"><p data-v-3de0248c="" class="text-green-24">Fale conosco</p><p data-v-3de0248c="" class="text-white-20-light q-mt-lg">(34) 3219-7376</p><p data-v-3de0248c="" class="text-white-20-light">contato@gira.com.br</p></div></div><div data-v-3de0248c="" class="divisor-footer q-mb-xl"></div><div data-v-3de0248c="" class="row q-col-gutter-md"><div data-v-3de0248c="" class="col-md-3 col-xs-6"><p data-v-3de0248c="" class="text-green-24">Uberlândia / MG - Matriz</p><p data-v-3de0248c="" class="text-white-16-light">Av. dos Vinhedos, 200 - Sala 10 - Morada da Colina</p></div><div data-v-3de0248c="" class="col-md-3 col-xs-6"><p data-v-3de0248c="" class="text-green-24">Silvânia / GO</p><p data-v-3de0248c="" class="text-white-16-light">Av. Mario Ferreira, nº 43, Quadra 32, Lote 128, Setor Central</p></div><div data-v-3de0248c="" class="col-md-3 col-xs-6"><p data-v-3de0248c="" class="text-green-24">Matupá / MT</p><p data-v-3de0248c="" class="text-white-16-light">Rua 04, nº 714, Bairro ZH1-001</p></div><div data-v-3de0248c="" class="col-md-3 col-xs-6"><p data-v-3de0248c="" class="text-green-24">Confresa / MT</p><p data-v-3de0248c="" class="text-white-16-light">Av. Industrial, 275, sala 07, Bairro Vila Nova</p></div><div data-v-3de0248c="" class="col-md-3 col-xs-6"><p data-v-3de0248c="" class="text-green-24">Balsas / MA</p><p data-v-3de0248c="" class="text-white-16-light">Av. José Bernardino, nº 50, sala 01, Bairro de Fátima</p></div><div data-v-3de0248c="" class="col-md-3 col-xs-6"><p data-v-3de0248c="" class="text-green-24">Chapadão do Sul / MS</p><p data-v-3de0248c="" class="text-white-16-light">Av. Quatro, nº 480, Sala 1, Térreo</p></div><div data-v-3de0248c="" class="col-md-3 col-xs-6"><p data-v-3de0248c="" class="text-green-24">Tailândia / PA</p><p data-v-3de0248c="" class="text-white-16-light">Av. Belém, nº 87, quadra 01, lote 01, altos, anexo ao Posto Paraíso, sala comercial nº 05, Bairro Centro</p></div><div data-v-3de0248c="" class="col-md-3 col-xs-6"><p data-v-3de0248c="" class="text-green-24">Ariquemes / RO</p><p data-v-3de0248c="" class="text-white-16-light">Av. Tancredo Neves, n° 2695, Setor 03, SALA 02</p></div><div data-v-3de0248c="" class="col-md-3 col-xs-6"><p data-v-3de0248c="" class="text-green-24">Boa Vista / RR</p><p data-v-3de0248c="" class="text-white-16-light">Av. Benjamin Constant, nº 1.171, sala 06, Bairro Centro</p></div><div data-v-3de0248c="" class="col-md-3 col-xs-6"><p data-v-3de0248c="" class="text-green-24">São Paulo / SP</p><p data-v-3de0248c="" class="text-white-16-light">Av. Presidente Juscelino Kubitschek, nº 2.041 - Loja 01, Bloco A, Cond. Torre JK</p></div><div data-v-3de0248c="" class="col-md-3 col-xs-6"><p data-v-3de0248c="" class="text-green-24">Porto Nacional / TO</p><p data-v-3de0248c="" class="text-white-16-light">Rua Paraguaçu, nº 3020, sala A, Bairro Jardim Umuarama</p></div></div><div data-v-3de0248c="" class="divisor-footer q-mb-lg"></div><p data-v-3de0248c="" class="text-grey-16">© 2021 - GIRA</p></div></section><section data-v-005f8f68="" data-v-f2864f12="" id="site-model" class="site-floating-form"><!----><div data-v-005f8f68="" class="site-box-bts-float"><!----><a data-v-005f8f68="" tabindex="0" class="q-btn inline q-btn-item non-selectable no-outline bt-whats q-btn--standard q-btn--round q-btn--actionable q-focusable q-hoverable" href="https://api.whatsapp.com/send?phone=553499190660&amp;text=Ol%C3%A1.%20Sou%20produtor%20rural%20e%20gostaria%20de%20falar%20com%20um%20representante%20comercial%20GIRA." style="font-size: 20px; background: rgb(10, 220, 46); color: rgb(52, 52, 52);"><div tabindex="-1" class="q-focus-helper"></div><div class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><i aria-hidden="true" class="fab fa-whatsapp q-icon"> </i></div></a><a data-v-005f8f68="" tabindex="0" class="q-btn inline q-btn-item non-selectable no-outline bt-whats-txt q-btn--standard q-btn--rectangle q-btn--actionable q-focusable q-hoverable" href="https://api.whatsapp.com/send?phone=553499190660&amp;text=Ol%C3%A1.%20Sou%20produtor%20rural%20e%20gostaria%20de%20falar%20com%20um%20representante%20comercial%20GIRA." style="background: rgb(10, 220, 46); color: rgb(52, 52, 52);"><div tabindex="-1" class="q-focus-helper"></div><div class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><div>Ou fale conosco pelo Whatsapp</div></div></a></div></section><section data-v-75b03313="" data-v-f2864f12=""><a data-v-75b03313="" tabindex="0" class="q-btn inline q-btn-item non-selectable no-outline site-bt-mobile q-btn--flat q-btn--rectangle text-white q-btn--actionable q-focusable q-hoverable"><div tabindex="-1" class="q-focus-helper"></div><div class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><i aria-hidden="true" class="material-icons q-icon">reorder</i></div></a><!----></section></main></div></div></div>
+</body>
+
+
+
+<svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M0 0 "></path></svg>
